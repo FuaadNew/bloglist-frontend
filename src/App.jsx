@@ -19,9 +19,28 @@ const App = () => {
     )  
   }, [])
 
+  const HandlgeLogin = (event) =>{
+    event.preventDefault()
+    console.log('login with', username, password)
+  }
+
+
+
   return (
     <div>
       <h2>blogs</h2>
+      <Notification message={errorMessage} />
+      <form onSubmit={HandlgeLogin}>
+        <div>
+          username
+          <input type="text" value={username} onChange={({target}) => setUsername(target.value)} />
+        </div>
+        <div>
+          password
+          <input type="password" value={password} onChange={({target}) => setPassword(target.value)} />
+        </div>
+        <button type="submit">login</button>
+      </form>
       {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} />
       )}
