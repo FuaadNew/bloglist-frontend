@@ -12,6 +12,8 @@ const App = () => {
   const [url, setUrl] = useState('')
   const [likes, setLikes] = useState(0)
   const [user, setUser] = useState(null)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -19,18 +21,16 @@ const App = () => {
     )  
   }, [])
 
-  const HandlgeLogin = (event) =>{
+  const handleLogin = (event) => {
     event.preventDefault()
     console.log('login with', username, password)
   }
-
-
 
   return (
     <div>
       <h2>blogs</h2>
       <Notification message={errorMessage} />
-      <form onSubmit={HandlgeLogin}>
+      <form onSubmit={handleLogin}>
         <div>
           username
           <input type="text" value={username} onChange={({target}) => setUsername(target.value)} />
