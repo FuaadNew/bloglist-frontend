@@ -26,6 +26,29 @@ const App = () => {
     console.log('login with', username, password)
   }
 
+  const Notification = ({ message, type }) => {
+    if (message === null) {
+      return null
+    }
+    return <div className={type}>{message}</div>
+  }
+
+  if (user == null){
+    return (
+    <form onSubmit={handleLogin}>
+    <div>
+      username
+      <input type="text" value={username} onChange={({target}) => setUsername(target.value)} />
+    </div>
+    <div>
+      password
+      <input type="password" value={password} onChange={({target}) => setPassword(target.value)} />
+    </div>
+    <button type="submit">login</button>
+  </form>
+    )
+
+  }
   return (
     <div>
       <h2>blogs</h2>
